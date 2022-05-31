@@ -1,0 +1,29 @@
+<nav id="sidebar">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-outline-dark" (click)="toggleSideBar()">
+            <fa-icon [icon]="icons.faBars"></fa-icon>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+    </div>
+    <h1><a href="/admin" class="logo">Cleo - Admin</a></h1>
+    <ul class="list-unstyled components mb-5">
+        <li [class.active]="activePage==1">
+            <a (click)="clickNavLink(1)" ><fa-icon [fixedWidth]="true" [icon]="icons.faCalendarWeek" class="mr-3"></fa-icon> Horaire</a>
+        </li>
+        <li [class.active]="activePage==2">
+            <a (click)="clickNavLink(2)"><fa-icon [fixedWidth]="true" [icon]="icons.faClock" class="mr-3"></fa-icon> Disponibilités</a>
+        </li>
+        <!--<li [class.active]="activePage==3">
+            <a (click)="clickNavLink(3)"><fa-icon [fixedWidth]="true" [icon]="icons.faFileAlt" class="mr-3"></fa-icon> Rapports</a>
+        </li>-->
+        <li [class.active]="activePage==4">
+            <a (click)="clickNavLink(4)"><fa-icon [fixedWidth]="true" [icon]="icons.faUsers" class="mr-3"></fa-icon> Gérer Étudiants</a>
+        </li>
+        <li [class.active]="activePage==5">
+            <a (click)="clickNavLink(5)"><fa-icon [fixedWidth]="true" [icon]="icons.faTags" class="mr-3"></fa-icon> Roles Étudiants</a>
+        </li>
+        <li>
+            <a (click)="logout()"><fa-icon [fixedWidth]="true" [icon]="icons.faSignOut" class="mr-3"></fa-icon> Déconnexion</a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,15 @@
+<div class="selectContainer">
+    <h4 class="ml-5 mr-2 pt-3 float-left">Consulter les disponibilités pour: </h4>
+    <select class="mt-3 py-1" [(ngModel)]="selectValue" (change)="onSelectChange($event)">
+        <option *ngFor="let s of students" [ngValue]="s">{{s.FirstName}} {{s.LastName}} ({{s.StudentID}})</option>
+    </select>
+</div>
+<div class="my-2">
+    <input class="ml-5 mb-2" type="text" name="reason" placeholder="Reason" [(ngModel)]="reason">
+    <div class="event ml-3" id="fc-event">{{reason}}</div>
+    <div class="float-right">
+        <p class="float-left mb-0" style="padding: 0.375rem 0.75rem" *ngIf="saved">Saved!</p>
+        <button class="btn btn-success mr-5" type="button" (click)="saveSchedule()">Save</button>
+    </div>
+</div>
+<app-schedule [overlap]="false" [fridayEnabled]="false"></app-schedule>

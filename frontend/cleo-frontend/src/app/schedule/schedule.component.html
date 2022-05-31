@@ -1,0 +1,22 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modifier</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="reason">
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteClick(modal)">Delete</button>
+        <button type="button" class="btn btn-outline-dark" (click)="saveClick(modal)">Save</button>
+    </div>
+  </ng-template>
+<div>
+  <full-calendar [options]="calendarOptions" class="mx-5"></full-calendar>
+</div>

@@ -1,0 +1,37 @@
+<h4 class="mb-4 ml-2">Roles Étudiants</h4>
+<div class="ml-2">
+    <p>Modifier les roles pour l'étudiant suivant: </p>
+    <select class="mt-3 py-1" [(ngModel)]="selectValue" (change)="onSelectChange($event)">
+        <option *ngFor="let s of students" [ngValue]="s">{{s.FirstName}} {{s.LastName}} ({{s.StudentID}})</option>
+    </select>
+    <ul class="list-group mt-3 col-sm-4">
+        <li class="list-group-item rounded-0">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" id="customCheck1" type="checkbox" disabled checked>
+                <label class="cursor-pointer d-block custom-control-label" for="customCheck1">Étudiant</label>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" id="customCheck2" type="checkbox" [(ngModel)]="tutorCheck">
+                <label class="cursor-pointer d-block custom-control-label" for="customCheck2">Tuteur</label>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" id="customCheck3" type="checkbox"[(ngModel)]="monitorCheck">
+                <label class="cursor-pointer d-block custom-control-label" for="customCheck3">Moniteur</label>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" id="customCheck4" type="checkbox"[(ngModel)]="relCheck">
+                <label class="cursor-pointer d-block custom-control-label" for="customCheck4">Relationiste</label>
+            </div>
+        </li>
+    </ul>
+    <div class="mt-4" style="display: inline-block">
+        <p class="mb-0 float-right text-success" style="padding: 0.375rem 0.75rem" *ngIf="saved">Saved!</p>
+        <button class="btn btn-success mr-1" type="button" (click)="saveRoles()">Save</button>
+    </div>
+</div>

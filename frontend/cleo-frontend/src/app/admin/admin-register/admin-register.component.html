@@ -1,0 +1,73 @@
+<h4 class="mb-5 ml-2">Gérer Étudiants</h4>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ajouter un étudiant</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Numéro Étudiant</span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="addStudentID">
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="addStudent(modal)">Ajouter</button>
+    </div>
+</ng-template>
+<div style="display: flex" class="no-select">
+    <!--Active Students-->
+    <div class="mr-5 border border-2 border-dark rounded">
+        <ul class="list-group" style="width: 21rem">
+            <li class="list-group-item list-group-item-action list-group-item-success"><b>Étudiants Actifs</b></li>
+        </ul>
+        <div id="activeList" class="list-group" style="width: 21rem; overflow-y: auto; max-height: 70vh">
+            <a class="list-group-item list-group-item-action" *ngFor="let s of students"
+                (click)="selectActiveStudent(s)"
+                [ngClass]="activeStudentId == s.StudentID ? 'active' : ''">{{s.FirstName}} {{s.LastName}}</a>
+        </div>
+    </div>
+
+    <!--Not yet registered students-->
+    <div class="mr-5 border border-2 border-dark rounded">
+        <ul class="list-group" style="width: 21rem">
+            <li class="list-group-item list-group-item-action list-group-item-warning"><b>Étudiants Non-Inscrits</b>
+            </li>
+        </ul>
+        <div id="unRegisteredList" class="list-group" style="width: 21rem; overflow-y: auto; max-height: 70vh">
+            <a class="list-group-item list-group-item-action" *ngFor="let s of nonRegisteredStudents"
+                (click)="selectUnregisteredStudentId(s)"
+                [ngClass]="unregisteredStudentId == s.StudentID ? 'active' : ''">{{s.StudentID}}</a>
+        </div>
+    </div>
+
+    <!--Non active students for semester-->
+    <div class="border border-2 border-dark rounded">
+        <ul class="list-group" style="width: 21rem">
+            <li class="list-group-item list-group-item-action list-group-item-danger"><b>Étudiants Inactifs</b>
+            </li>
+        </ul>
+        <div id="inactiveList" class="list-group" style="width: 21rem; overflow-y: auto; max-height: 70vh">
+            <a class="list-group-item list-group-item-action" *ngFor="let s of inactiveStudents"
+                (click)="selectNonActiveStudentId(s)"
+                [ngClass]="inactiveStudentId == s.StudentID ? 'active' : ''">{{s.FirstName}}
+                {{s.LastName}}</a>
+        </div>
+    </div>
+</div>
+<div class="mt-1">
+    <button type="button" class="btn btn-success" disabled><fa-icon [fixedWidth]="true" [icon]="icons.faPlusCircle" class="px-1"></fa-icon></button>
+    <button type="button" class="btn btn-danger" style="margin-left: 10.05rem" (click)="makeStudentInactive(activeStudentId)">Rendre Inactif</button>
+
+    <button type="button" class="btn btn-success ml-5" (click)="showModal()"><fa-icon [fixedWidth]="true" [icon]="icons.faPlusCircle" class="px-1"></fa-icon></button>
+    <button type="button" class="btn btn-danger" style="margin-left: 14.27rem" (click)="deleteStudent(unregisteredStudentId)"><fa-icon [fixedWidth]="true" [icon]="icons.faMinusCircle" class="px-1"></fa-icon></button>
+
+    <button type="button" class="btn btn-success ml-5" (click)="makeStudentActive(inactiveStudentId)">Rendre Actif</button>
+    <button type="button" class="btn btn-danger" style="margin-left: 10.79rem" (click)="deleteStudent(inactiveStudentId)"><fa-icon [fixedWidth]="true" [icon]="icons.faMinusCircle" class="px-1"></fa-icon></button>
+</div>

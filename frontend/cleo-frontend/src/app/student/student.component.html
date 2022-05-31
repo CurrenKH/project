@@ -1,0 +1,7 @@
+<div class="d-flex align-items-stretch" style="width: 100%;">
+    <app-student-navbar [activePage]="activePage" (pageChanged)="pageChanged($event)"></app-student-navbar>
+    <div class="content pt-5 p-4 p-md-5">
+        <app-student-availabilities *ngIf="activePage==1"></app-student-availabilities>
+        <app-student-info *ngIf="activePage==2"></app-student-info>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="limiter">
+    <div class="container-login100">
+        <ul class="tabs nav nav-tabs wrap-login100 no-select">
+            <li class="nav-item w-50">
+                <a class="nav-link tab" [ngClass]="isLogin ? 'active' : ''" (click)="loginToggle()">Connexion</a>
+            </li>
+            <li class="nav-item w-50">
+                <a class="nav-link tab" [ngClass]="isLogin ? '' : 'active'" (click)="registerToggle()">Inscription</a>
+            </li>
+        </ul>
+        <div class="wrap-login100 pl-5 pr-5 pt-5 pb-5 no-top-border">
+            <!------------LOGIN------------>
+            <form class="login100-form validate-form" *ngIf="isLogin" (ngSubmit)="onSubmit()">
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Mot de passe oublié</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="desc">Addresse Email</span>
+                            </div>
+                            <input type="text" class="form-control" [(ngModel)]="forgotEmail" style="border: 1px solid" aria-describedby="desc">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" style="border: 1px solid"
+                            (click)="forgotPasswordSend()">Confirmer</button>
+                    </div>
+                </ng-template>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" [(ngModel)]="studentID" type="text" name="studentid"
+                        placeholder="# Étudiant">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input100" [(ngModel)]="password" type="password" name="password"
+                        placeholder="Mot de Passe">
+                </div>
+                <div class="container-login100-form-btn mt-3">
+                    <button class="login100-form-btn no-select">
+                        Se Connecter
+                    </button>
+                </div>
+                <p class="txt1 text-danger mt-3 text-center" [ngClass]="failedLogin ? '':'hidden'" id="failedLogin">#
+                    Étudiant ou Mot de Passe incorrect</p>
+                <div class="text-center pt-4">
+                    <a class="txt2 hov1" (click)="forgotPassword()" style="cursor: pointer">
+                        Mot de passe oublié ?
+                    </a>
+                </div>
+            </form>
+            <!------------Register------------>
+            <form class="login100-form validate-form" *ngIf="!isLogin" (ngSubmit)="onRegisterSubmit()">
+                <!--<span class="login100-form-title pb-4">
+                    Enregistrement
+                </span>-->
+                <div class="wrap-input100 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.studentID" type="text" name="studentid"
+                        placeholder="# Étudiant">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.firstName" type="text" name="studentid"
+                        placeholder="Prénom">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.lastName" type="text" name="studentid"
+                        placeholder="Nom">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.email" type="text" name="studentid"
+                        placeholder="Email">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.cellphone" type="text" name="studentid"
+                        placeholder="Téléphone (optionel)">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.password" type="password" name="password"
+                        placeholder="Mot de Passe">
+                </div>
+                <div class="wrap-input100 rs1 validate-input">
+                    <input class="input50" [(ngModel)]="registerInfo.passwordRepeat" type="password" name="password"
+                        placeholder="Mot de Passe (confirmation)">
+                </div>
+                <div class="container-login100-form-btn mt-3">
+                    <button class="login100-form-btn">
+                        S’inscrire
+                    </button>
+                </div>
+                <p class="txt1 text-danger mt-3 text-center" [ngClass]="failedLogin ? '':'hidden'" id="failedLogin">
+                    {{registerMessage}}</p>
+            </form>
+        </div>
+    </div>
+</div>

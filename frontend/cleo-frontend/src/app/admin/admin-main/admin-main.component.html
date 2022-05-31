@@ -1,0 +1,10 @@
+<div class="d-flex align-items-stretch" style="width: 100%;">
+    <app-admin-navbar [activePage]="activePage" (pageChanged)="pageChanged($event)"></app-admin-navbar>
+    <div class="content pt-5 p-4 p-md-5">
+        <app-admin-schedule *ngIf="activePage==1"></app-admin-schedule>
+        <app-admin-availabilities *ngIf="activePage==2"></app-admin-availabilities>
+        <app-admin-reports *ngIf="activePage==3"></app-admin-reports>
+        <app-admin-register *ngIf="activePage==4"></app-admin-register>
+        <app-admin-roles *ngIf="activePage==5"></app-admin-roles>
+    </div>
+</div>

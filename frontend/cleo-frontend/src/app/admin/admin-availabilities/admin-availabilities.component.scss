@@ -1,0 +1,25 @@
+@import "~font-awesome/css/font-awesome.css";
+
+$height: 36;
+.event {
+    display: inline-block;
+    border: 1px solid #3788d8;
+    background-color: #3788d8;
+    position: relative;
+    white-space: normal;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+selectContainer {
+    display: inline-block;
+}
